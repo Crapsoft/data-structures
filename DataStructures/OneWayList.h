@@ -3,26 +3,31 @@
 #include <cstdlib>
 #include <iostream>
 
+template <class T>
 struct node
 {
-	int data;
+	T data;
 	node *next;
 };
 
+template <class T>
 class OneWayList
 {
 private:
-	node *head, *tail;
+	T *head, *tail;
 public:
 	OneWayList();
 	~OneWayList();
 	bool isEmpty();
-	void createnode(int value);
+	void insert_tail(T value);
 	void display();
-	void insert_start(int value);
-	void insert_position(int pos, int value);
+	void insert_start(T value);
+	void insert_position(int pos, T value);
 	void delete_first();
 	void delete_last();
 	void delete_position(int pos);
+	T get_last();
+	T get_first();
+	T get_postion(int pos);
 };
 

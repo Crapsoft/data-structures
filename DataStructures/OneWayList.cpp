@@ -1,24 +1,26 @@
 #include "OneWayList.h"
 
-
-OneWayList::OneWayList()
+template <class T>
+OneWayList<T>::OneWayList()
 {
 	head = NULL;
 	tail = NULL;
 }
 
-
-OneWayList::~OneWayList()
+template <class T>
+OneWayList<T>::~OneWayList()
 {
 	while (!isEmpty()) { delete_first(); }
 }
 
-bool OneWayList::isEmpty()
+template <class T>
+bool OneWayList<T>::isEmpty()
 {
 	return (this->head == NULL);
 }
 
-void OneWayList::createnode(int value)
+template <class T>
+void OneWayList<T>::insert_tail(T value)
 {
 	node *temp = new node;
 	temp->data = value;
@@ -36,7 +38,8 @@ void OneWayList::createnode(int value)
 	}
 }
 
-void OneWayList::display()
+template <class T>
+void OneWayList<T>::display()
 {
 	node *temp = new node;
 	temp = head;
@@ -47,7 +50,8 @@ void OneWayList::display()
 	}
 }
 
-void OneWayList::insert_start(int value)
+template <class T>
+void OneWayList<T>::insert_start(T value)
 {
 	node *temp = new node;
 	temp->data = value;
@@ -55,7 +59,8 @@ void OneWayList::insert_start(int value)
 	head = temp;
 }
 
-void OneWayList::insert_position(int pos, int value)
+template <class T>
+void OneWayList<T>::insert_position(int pos, T value)
 {
 	node *pre = new node;
 	node *cur = new node;
@@ -71,7 +76,8 @@ void OneWayList::insert_position(int pos, int value)
 	temp->next = cur;
 }
 
-void OneWayList::delete_first()
+template <class T>
+void OneWayList<T>::delete_first()
 {
 	node *temp = new node;
 	temp = head;
@@ -79,7 +85,8 @@ void OneWayList::delete_first()
 	delete temp;
 }
 
-void OneWayList::delete_last()
+template <class T>
+void OneWayList<T>::delete_last()
 {
 	node *current = new node;
 	node *previous = new node;
@@ -94,7 +101,8 @@ void OneWayList::delete_last()
 	delete current;
 }
 
-void OneWayList::delete_position(int pos)
+template <class T>
+void OneWayList<T>::delete_position(int pos)
 {
 	node *current = new node;
 	node *previous = new node;
@@ -105,4 +113,28 @@ void OneWayList::delete_position(int pos)
 		current = current->next;
 	}
 	previous->next = current->next;
+}
+
+template<class T>
+T OneWayList<T>::get_last()
+{
+	return tail->data;
+}
+
+template<class T>
+T OneWayList<T>::get_first()
+{
+	return head->data;
+}
+
+template<class T>
+T OneWayList<T>::get_postion(int pos)
+{
+	node *current = new node;
+	current = head;
+	for (int i = 1; i<pos; i++)
+	{
+		current = current->next;
+	}
+	return current->data;
 }
