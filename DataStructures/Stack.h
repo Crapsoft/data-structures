@@ -1,5 +1,5 @@
 #pragma once
-#include "OneWayList.h"
+#include "OneWayList.cpp"
 #include <exception>
 using namespace std;
 

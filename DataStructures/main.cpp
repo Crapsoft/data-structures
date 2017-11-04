@@ -7,15 +7,15 @@ using namespace std;
 
 int main()
 {
-	/*OneWayList<int> IntList = OneWayList<int>();
+	OneWayList<int> IntList = OneWayList<int>();
 	IntList.insert_tail(1);
 	IntList.insert_tail(2);
 	IntList.insert_tail(3);
 	IntList.display();
 	IntList.delete_first();
-	IntList.delete_position(1);
-	IntList.delete_last();
-	IntList.display();*/
+	IntList.delete_first();
+	IntList.delete_first();
+	IntList.display();
 
 	system("pause");
 	return 0;

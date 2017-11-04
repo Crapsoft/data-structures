@@ -1,3 +1,4 @@
+#pragma once
 #include <cstdlib>
 #include <iostream>
 
@@ -8,7 +9,7 @@ struct node
 	node<T> *next;
 };
 
-template <typename T>
+template <typename T>	
 class OneWayList
 {
 private:
@@ -72,13 +73,18 @@ void OneWayList<T>::insert_tail(T value)
 template <typename T>
 void OneWayList<T>::display()
 {
-	node<T> *temp = new node<T>();
-	temp = head;
-	while (temp != NULL)
-	{
-		std::cout << temp->data << "\t";
-		temp = temp->next;
-	}
+		node<T> *temp = new node<T>();
+		temp = NULL;
+		if (!isEmpty()) {
+			temp = head;
+			while (temp != NULL)
+			{
+				std::cout << temp->data << "\t";
+				temp = temp->next;
+			}
+			std::cout << endl << "zz";
+		}
+		delete temp;
 }
 
 template <typename T>
@@ -110,10 +116,14 @@ void OneWayList<T>::insert_position(int pos, T value)
 template <typename T>
 void OneWayList<T>::delete_first()
 {
-	node<T> *temp = new node<T>();
-	temp = head;
-	head = head->next;
-	delete temp;
+	if (!isEmpty()) {
+		node<T> *temp = new node<T>();
+		temp = head;
+		if (head->next != NULL) {
+			head = head->next;
+		}
+		delete temp;
+	}
 }
 
 template <typename T>
@@ -138,7 +148,7 @@ void OneWayList<T>::delete_position(int pos)
 	node<T> *current = new node<T>();
 	node<T> *previous = new node<T>();
 	current = head;
-	for (int i = 1; i<pos; i++)
+	for (int i = 0; i < pos; i++)
 	{
 		previous = current;
 		current = current->next;
@@ -161,7 +171,7 @@ T OneWayList<T>::get_first()
 template <typename T>
 T OneWayList<T>::get_postion(int pos)
 {
-	node *current = new node;
+	node<T> *current = new node<T>();
 	current = head;
 	for (int i = 1; i<pos; i++)
 	{
