@@ -1,20 +1,19 @@
-#pragma once
-
 #include <cstdlib>
 #include <iostream>
 
-template <class T>
+template <typename T>
 struct node
 {
 	T data;
-	node *next;
+	node<T> *next;
 };
 
-template <class T>
+template <typename T>
 class OneWayList
 {
 private:
-	T *head, *tail;
+	node<T> *head;
+	node<T> *tail;
 public:
 	OneWayList();
 	~OneWayList();
@@ -30,4 +29,3 @@ public:
 	T get_first();
 	T get_postion(int pos);
 };
-

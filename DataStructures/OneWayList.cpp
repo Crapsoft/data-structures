@@ -1,28 +1,28 @@
 #include "OneWayList.h"
 
-template <class T>
+template <typename T>
 OneWayList<T>::OneWayList()
 {
-	head = NULL;
-	tail = NULL;
+	this->head = NULL;
+	this->tail = NULL;
 }
 
-template <class T>
-OneWayList<T>::~OneWayList()
-{
-	while (!isEmpty()) { delete_first(); }
-}
-
-template <class T>
+template <typename T>
 bool OneWayList<T>::isEmpty()
 {
 	return (this->head == NULL);
 }
 
-template <class T>
+template <typename T>
+OneWayList<T>::~OneWayList()
+{
+	while (!isEmpty()) { delete_first(); }
+}
+
+template <typename T>
 void OneWayList<T>::insert_tail(T value)
 {
-	node *temp = new node;
+	node<T> *temp = new node<T>();
 	temp->data = value;
 	temp->next = NULL;
 	if (this->head == NULL)
@@ -33,15 +33,15 @@ void OneWayList<T>::insert_tail(T value)
 	}
 	else
 	{
-		tail->next = temp;
-		tail = temp;
+		this->tail->next = temp;
+		this->tail = temp;
 	}
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::display()
 {
-	node *temp = new node;
+	node<T> *temp = new node<T>();
 	temp = head;
 	while (temp != NULL)
 	{
@@ -50,21 +50,21 @@ void OneWayList<T>::display()
 	}
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::insert_start(T value)
 {
-	node *temp = new node;
+	node<T> *temp = new node<T>();
 	temp->data = value;
 	temp->next = head;
 	head = temp;
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::insert_position(int pos, T value)
 {
-	node *pre = new node;
-	node *cur = new node;
-	node *temp = new node;
+	node<T> *pre = new node<T>();
+	node<T> *cur = new node<T>();
+	node<T> *temp = new node<T>();
 	cur = head;
 	for (int i = 1; i<pos; i++)
 	{
@@ -76,20 +76,20 @@ void OneWayList<T>::insert_position(int pos, T value)
 	temp->next = cur;
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::delete_first()
 {
-	node *temp = new node;
+	node<T> *temp = new node<T>();
 	temp = head;
 	head = head->next;
 	delete temp;
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::delete_last()
 {
-	node *current = new node;
-	node *previous = new node;
+	node<T> *current = new node<T>();
+	node<T> *previous = new node<T>();
 	current = head;
 	while (current->next != NULL)
 	{
@@ -101,11 +101,11 @@ void OneWayList<T>::delete_last()
 	delete current;
 }
 
-template <class T>
+template <typename T>
 void OneWayList<T>::delete_position(int pos)
 {
-	node *current = new node;
-	node *previous = new node;
+	node<T> *current = new node<T>();
+	node<T> *previous = new node<T>();
 	current = head;
 	for (int i = 1; i<pos; i++)
 	{
@@ -115,19 +115,19 @@ void OneWayList<T>::delete_position(int pos)
 	previous->next = current->next;
 }
 
-template<class T>
+template <typename T>
 T OneWayList<T>::get_last()
 {
 	return tail->data;
 }
 
-template<class T>
+template <typename T>
 T OneWayList<T>::get_first()
 {
 	return head->data;
 }
 
-template<class T>
+template <typename T>
 T OneWayList<T>::get_postion(int pos)
 {
 	node *current = new node;
