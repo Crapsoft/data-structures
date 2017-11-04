@@ -1,2 +1,3 @@
-﻿  Stack.cpp
+﻿  main.cpp
+c:\users\admin\documents\github\data-structures\datastructures\stack.cpp(56): warning C4715: Stack<int>::pop: значение возвращается не при всех путях выполнения
   DataStructures.vcxproj -> C:\Users\Admin\Documents\GitHub\data-structures\DataStructures\Debug\DataStructures.exe

@@ -1,24 +1,21 @@
 #pragma once
 #include "OneWayList.h"
+#include <exception>
 using namespace std;
-struct node2
-{
-	int data;
-	node2 *next;
-};
 
+template <typename T>
 class Stack
 {
 private:
-	node2* top;
+	node<T>* top;
 	int size;
 public:
 	Stack();
 	~Stack();
-	void push(int el);
-	int pop();
+	void push(T el);
+	T pop();
 	int getSize();
-	int getTop();
+	T getTop();
 	bool isempty();
 };
 
