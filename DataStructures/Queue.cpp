@@ -1,39 +1,49 @@
 #include "Queue.h"
 
 
-
-Queue::Queue()
+template <class T>
+Queue<T>::Queue()
 {
+	foo = OneWayList<T>();
 	this->size = 0;
 }
 
 
-Queue::~Queue()
+template <class T>
+Queue<T>::~Queue()
 {
 }
 
-bool Queue::isEmpty() const
+template <class T>
+bool Queue<T>::isEmpty() const
 {
 	return (this->size == 0);
 }
 
-int Queue::getSize() const
+template <class T>
+int Queue<T>::getSize() const
 {
 	return this->size;
 }
 
-//int Queue::dequeue()
-//{
-//	arr.()
-//	this->size--;
-//	return member;
-//}
-
-void Queue::enqueue(int _member)
+template <class T>
+T Queue<T>::dequeue()
 {
+	T member = foo.get_first();
+	foo.delete_first();
+	this->size--;
+	return member;
 }
 
-int Queue::search(int _key) const
+template <class T>
+void Queue<T>::enqueue(T _member)
 {
-	return 0;
+	foo.insert_tail(_member);
+	this->size++;
+}
+
+template <class T>
+int Queue<T>::search(T _key) const
+{
+	return foo.search(_key);
 }

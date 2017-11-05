@@ -19,14 +19,15 @@ private:
 public:
 	OneWayList();
 	~OneWayList();
-	bool isEmpty();
+	bool isEmpty()const;
 	void insert_tail(T value);
-	void display();
+	void display()const;
 	void insert_start(T value);
 	void insert_position(int pos, T value);
 	void delete_first();
 	void delete_last();
 	void delete_pos(int pos);			// Beginning from List[0]
+	int search(T _key)const;
 	T get_last();
 	T get_first();
 	T get_postion(int pos);
@@ -41,17 +42,20 @@ OneWayList<T>::OneWayList()
 	this->size = 0;
 }
 
+
 template <typename T>
-bool OneWayList<T>::isEmpty()
+bool OneWayList<T>::isEmpty()const
 {
 	return (this->size == 0);
 }
+
 
 template <typename T>
 OneWayList<T>::~OneWayList()
 {
 	while (!isEmpty()) { delete_first(); }
 }
+
 
 template <typename T>
 void OneWayList<T>::insert_tail(T value)
@@ -74,8 +78,9 @@ void OneWayList<T>::insert_tail(T value)
 	this->size++;
 }
 
+
 template <typename T>
-void OneWayList<T>::display()
+void OneWayList<T>::display()const
 {
 		node<T> *temp = new node<T>();
 		temp = NULL;
@@ -94,6 +99,7 @@ void OneWayList<T>::display()
 		delete temp;
 }
 
+
 template <typename T>
 void OneWayList<T>::insert_start(T value)
 {
@@ -104,6 +110,7 @@ void OneWayList<T>::insert_start(T value)
 
 	this->size++;
 }
+
 
 template <typename T>
 void OneWayList<T>::insert_position(int pos, T value)
@@ -123,6 +130,7 @@ void OneWayList<T>::insert_position(int pos, T value)
 
 	this->size++;
 }
+
 
 template <typename T>
 void OneWayList<T>::delete_first()
@@ -146,6 +154,7 @@ void OneWayList<T>::delete_first()
 
 	this->size--;
 }
+
 
 template <typename T>
 void OneWayList<T>::delete_last()
@@ -172,6 +181,7 @@ void OneWayList<T>::delete_last()
 	this->size--;
 }
 
+
 template <typename T>
 void OneWayList<T>::delete_pos(int pos)
 {
@@ -196,17 +206,50 @@ void OneWayList<T>::delete_pos(int pos)
 	this->size--;
 }
 
+
+template <typename T>
+int OneWayList<T>::search(T _key)const
+{
+	if (isEmpty()) 
+	{
+		cout << "The list is empty!";
+		return -1;
+	}
+	else if (head->data == _key)
+	{
+		return 0;
+	}
+	else
+	{
+		node<T> *temp = head;
+		int pos = 0;
+		while (temp->data != _key)
+		{
+			pos++;
+			if (pos > this->size) {
+				return -1;
+			}
+			temp = temp->next;
+			if (temp->data == _key) {
+				return pos;
+			}
+		}
+	}
+}
+
 template <typename T>
 T OneWayList<T>::get_last()
 {
 	return tail->data;
 }
 
+
 template <typename T>
 T OneWayList<T>::get_first()
 {
 	return head->data;
 }
+
 
 template <typename T>
 T OneWayList<T>::get_postion(int pos)
