@@ -7,6 +7,7 @@ Stack<T>::Stack()
 	top = NULL;
 	size = 0;
 }
+
 template <typename T>
 void Stack<T>::push(T el) {
 	try
@@ -30,6 +31,7 @@ void Stack<T>::push(T el) {
 		cout << "std::bad_alloc" << endl;
 	}
 }
+
 template <typename T>
 T Stack<T>::pop() {
 	try
@@ -52,12 +54,15 @@ T Stack<T>::pop() {
 	catch (const std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
+		return NULL;
 	}
 }
+
 template <typename T>
 int Stack<T>::getSize() {
 	return size;
 }
+
 template <typename T>
 T Stack<T>::getTop() {
 	if (top == NULL)
@@ -70,6 +75,7 @@ T Stack<T>::getTop() {
 		return top->data;
 	}
 }
+
 template <typename T>
 bool Stack<T>::isempty() {
 	if (size == 0)
@@ -81,7 +87,17 @@ bool Stack<T>::isempty() {
 		return false;
 	}
 }
+
+template<typename T>
+void Stack<T>::clear() {
+	while (!isempty())
+	{
+		pop();
+	}
+}
+
 template <typename T>
 Stack<T>::~Stack()
 {
+
 }

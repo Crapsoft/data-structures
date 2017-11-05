@@ -17,5 +17,6 @@ public:
 	int getSize();
 	T getTop();
 	bool isempty();
+	void clear();
 };
 
