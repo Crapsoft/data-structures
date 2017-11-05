@@ -15,6 +15,7 @@ class OneWayList
 private:
 	node<T> *head;
 	node<T> *tail;
+	int size;
 public:
 	OneWayList();
 	~OneWayList();
@@ -25,7 +26,7 @@ public:
 	void insert_position(int pos, T value);
 	void delete_first();
 	void delete_last();
-	void delete_position(int pos);
+	void delete_pos(int pos);			// Beginning from List[0]
 	T get_last();
 	T get_first();
 	T get_postion(int pos);
@@ -37,12 +38,13 @@ OneWayList<T>::OneWayList()
 {
 	this->head = NULL;
 	this->tail = NULL;
+	this->size = 0;
 }
 
 template <typename T>
 bool OneWayList<T>::isEmpty()
 {
-	return (this->head == NULL);
+	return (this->size == 0);
 }
 
 template <typename T>
@@ -68,6 +70,8 @@ void OneWayList<T>::insert_tail(T value)
 		this->tail->next = temp;
 		this->tail = temp;
 	}
+	
+	this->size++;
 }
 
 template <typename T>
@@ -82,7 +86,10 @@ void OneWayList<T>::display()
 				std::cout << temp->data << "\t";
 				temp = temp->next;
 			}
-			std::cout << endl << "zz";
+			std::cout << endl;
+		}
+		else {
+			std::cout << "List is empty! \n";
 		}
 		delete temp;
 }
@@ -94,6 +101,8 @@ void OneWayList<T>::insert_start(T value)
 	temp->data = value;
 	temp->next = head;
 	head = temp;
+
+	this->size++;
 }
 
 template <typename T>
@@ -111,49 +120,80 @@ void OneWayList<T>::insert_position(int pos, T value)
 	temp->data = value;
 	pre->next = temp;
 	temp->next = cur;
+
+	this->size++;
 }
 
 template <typename T>
 void OneWayList<T>::delete_first()
 {
-	if (!isEmpty()) {
+	if (this->size > 1) {
 		node<T> *temp = new node<T>();
 		temp = head;
-		if (head->next != NULL) {
-			head = head->next;
-		}
+		this->head = this->head->next;
 		delete temp;
 	}
+	else if(this->size == 1)
+	{
+		delete head;
+		this->head = NULL;
+		this->tail = NULL;
+	}
+	else
+	{
+		cout << "List is already empty! \n";
+	}
+
+	this->size--;
 }
 
 template <typename T>
 void OneWayList<T>::delete_last()
 {
-	node<T> *current = new node<T>();
-	node<T> *previous = new node<T>();
-	current = head;
-	while (current->next != NULL)
-	{
-		previous = current;
-		current = current->next;
+	if (this->size == 1) {
+		delete tail;
+		this->head = NULL;
+		this->tail = NULL;
 	}
-	tail = previous;
-	previous->next = NULL;
-	delete current;
+	else {
+		node<T> *current = new node<T>();
+		node<T> *previous = new node<T>();
+		current = head;
+		while (current->next != NULL)
+		{
+			previous = current;
+			current = current->next;
+		}
+		tail = previous;
+		previous->next = NULL;
+		delete current;
+	}
+
+	this->size--;
 }
 
 template <typename T>
-void OneWayList<T>::delete_position(int pos)
+void OneWayList<T>::delete_pos(int pos)
 {
-	node<T> *current = new node<T>();
-	node<T> *previous = new node<T>();
-	current = head;
-	for (int i = 0; i < pos; i++)
+	if (this->size == 1)
 	{
-		previous = current;
-		current = current->next;
+		delete head;
+		delete tail;
 	}
-	previous->next = current->next;
+	else
+	{
+		node<T> *current = new node<T>();
+		node<T> *previous = new node<T>();
+		current = head;
+		for (int i = 0; i < pos; i++)
+		{
+			previous = current;
+			current = current->next;
+		}
+		previous->next = current->next;
+	}
+
+	this->size--;
 }
 
 template <typename T>
