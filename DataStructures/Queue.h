@@ -1,19 +1,19 @@
 #pragma once
+#include "OneWayList.cpp"
 
-#include <vector>
-
+template <class T>
 class Queue
 {
 private:
 	int size;
-	std::vector<int> arr;
+	OneWayList<T> foo;
 public:
 	Queue();
 	~Queue();
 	bool isEmpty()const;
 	int getSize()const;
-	int dequeue();
-	void enqueue(int _member);
-	int search(int _key)const;		// return the position of the first _key element
+	T dequeue();
+	void enqueue(T _member);
+	int search(T _key)const;		// return the position of the first _key element
 };
 

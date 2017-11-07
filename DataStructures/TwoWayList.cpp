@@ -1,63 +1,30 @@
-#pragma once
-#include <cstdlib>
-#include <iostream>
+#include "TwoWayList.h"
 
-template <typename T>
-struct node
+
+
+template <class T>
+TwoWayList::TwoWayList()
 {
-	T data;
-	node<T> *next;
-};
-
-template <typename T>	
-class OneWayList
-{
-private:
-	node<T> *head;
-	node<T> *tail;
-	int size;
-public:
-	OneWayList();
-	~OneWayList();
-	bool isEmpty()const;
-	void insert_tail(T value);
-	void display()const;
-	void insert_start(T value);
-	void insert_position(int pos, T value);
-	void delete_first();
-	void delete_last();
-	void delete_pos(int pos);			// Beginning from List[0]
-	int search(T _key)const;
-	T get_last();
-	T get_first();
-	T get_postion(int pos);
-};
-
-
-template <typename T>
-OneWayList<T>::OneWayList()
-{
-	this->head = NULL;
-	this->tail = NULL;
 	this->size = 0;
+	head = NULL;
+	tail = NULL;
 }
 
 
-template <typename T>
+template <class T>
+TwoWayList::~TwoWayList()
+{
+}
+
+
+template <class T>
 bool OneWayList<T>::isEmpty()const
 {
 	return (this->size == 0);
 }
 
 
-template <typename T>
-OneWayList<T>::~OneWayList()
-{
-	while (!isEmpty()) { delete_first(); }
-}
-
-
-template <typename T>
+template <class T>
 void OneWayList<T>::insert_tail(T value)
 {
 	node<T> *temp = new node<T>();
@@ -74,33 +41,33 @@ void OneWayList<T>::insert_tail(T value)
 		this->tail->next = temp;
 		this->tail = temp;
 	}
-	
+
 	this->size++;
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::display()const
 {
-		node<T> *temp = new node<T>();
-		temp = NULL;
-		if (!isEmpty()) {
-			temp = head;
-			while (temp != NULL)
-			{
-				std::cout << temp->data << "\t";
-				temp = temp->next;
-			}
-			std::cout << endl;
+	node<T> *temp = new node<T>();
+	temp = NULL;
+	if (!isEmpty()) {
+		temp = head;
+		while (temp != NULL)
+		{
+			std::cout << temp->data << "\t";
+			temp = temp->next;
 		}
-		else {
-			std::cout << "List is empty! \n";
-		}
-		delete temp;
+		std::cout << endl;
+	}
+	else {
+		std::cout << "List is empty! \n";
+	}
+	delete temp;
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::insert_start(T value)
 {
 	node<T> *temp = new node<T>();
@@ -112,7 +79,7 @@ void OneWayList<T>::insert_start(T value)
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::insert_position(int pos, T value)
 {
 	node<T> *pre = new node<T>();
@@ -132,7 +99,7 @@ void OneWayList<T>::insert_position(int pos, T value)
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::delete_first()
 {
 	if (this->size > 1) {
@@ -141,7 +108,7 @@ void OneWayList<T>::delete_first()
 		this->head = this->head->next;
 		delete temp;
 	}
-	else if(this->size == 1)
+	else if (this->size == 1)
 	{
 		delete head;
 		this->head = NULL;
@@ -156,7 +123,7 @@ void OneWayList<T>::delete_first()
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::delete_last()
 {
 	if (this->size == 1) {
@@ -182,7 +149,7 @@ void OneWayList<T>::delete_last()
 }
 
 
-template <typename T>
+template <class T>
 void OneWayList<T>::delete_pos(int pos)
 {
 	if (this->size == 1)
@@ -207,10 +174,10 @@ void OneWayList<T>::delete_pos(int pos)
 }
 
 
-template <typename T>
+template <class T>
 int OneWayList<T>::search(T _key)const
 {
-	if (isEmpty()) 
+	if (isEmpty())
 	{
 		cout << "The list is empty!";
 		return -1;
@@ -237,21 +204,21 @@ int OneWayList<T>::search(T _key)const
 	}
 }
 
-template <typename T>
+template <class T>
 T OneWayList<T>::get_last()
 {
 	return tail->data;
 }
 
 
-template <typename T>
+template <class T>
 T OneWayList<T>::get_first()
 {
 	return head->data;
 }
 
 
-template <typename T>
+template <class T>
 T OneWayList<T>::get_postion(int pos)
 {
 	node<T> *current = new node<T>();
