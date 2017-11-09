@@ -1,9 +1,7 @@
 #include "TwoWayList.h"
 
-
-
 template <class T>
-TwoWayList::TwoWayList()
+TwoWayList<T>::TwoWayList()
 {
 	this->size = 0;
 	head = NULL;
@@ -12,20 +10,20 @@ TwoWayList::TwoWayList()
 
 
 template <class T>
-TwoWayList::~TwoWayList()
+TwoWayList<T>::~TwoWayList()
 {
 }
 
 
 template <class T>
-bool OneWayList<T>::isEmpty()const
+bool TwoWayList<T>::isEmpty()const
 {
 	return (this->size == 0);
 }
 
 
 template <class T>
-void OneWayList<T>::insert_tail(T value)
+void TwoWayList<T>::insert_tail(T value)
 {
 	node<T> *temp = new node<T>();
 	temp->data = value;
@@ -47,7 +45,7 @@ void OneWayList<T>::insert_tail(T value)
 
 
 template <class T>
-void OneWayList<T>::display()const
+void TwoWayList<T>::display()const
 {
 	node<T> *temp = new node<T>();
 	temp = NULL;
@@ -68,7 +66,7 @@ void OneWayList<T>::display()const
 
 
 template <class T>
-void OneWayList<T>::insert_start(T value)
+void TwoWayList<T>::insert_start(T value)
 {
 	node<T> *temp = new node<T>();
 	temp->data = value;
@@ -80,7 +78,7 @@ void OneWayList<T>::insert_start(T value)
 
 
 template <class T>
-void OneWayList<T>::insert_position(int pos, T value)
+void TwoWayList<T>::insert_position(int pos, T value)
 {
 	node<T> *pre = new node<T>();
 	node<T> *cur = new node<T>();
@@ -100,7 +98,7 @@ void OneWayList<T>::insert_position(int pos, T value)
 
 
 template <class T>
-void OneWayList<T>::delete_first()
+void TwoWayList<T>::delete_first()
 {
 	if (this->size > 1) {
 		node<T> *temp = new node<T>();
@@ -124,7 +122,7 @@ void OneWayList<T>::delete_first()
 
 
 template <class T>
-void OneWayList<T>::delete_last()
+void TwoWayList<T>::delete_last()
 {
 	if (this->size == 1) {
 		delete tail;
@@ -150,7 +148,7 @@ void OneWayList<T>::delete_last()
 
 
 template <class T>
-void OneWayList<T>::delete_pos(int pos)
+void TwoWayList<T>::delete_pos(int pos)
 {
 	if (this->size == 1)
 	{
@@ -175,7 +173,7 @@ void OneWayList<T>::delete_pos(int pos)
 
 
 template <class T>
-int OneWayList<T>::search(T _key)const
+int TwoWayList<T>::search(T _key)const
 {
 	if (isEmpty())
 	{
@@ -205,21 +203,21 @@ int OneWayList<T>::search(T _key)const
 }
 
 template <class T>
-T OneWayList<T>::get_last()
+T TwoWayList<T>::get_last()
 {
 	return tail->data;
 }
 
 
 template <class T>
-T OneWayList<T>::get_first()
+T TwoWayList<T>::get_first()
 {
 	return head->data;
 }
 
 
 template <class T>
-T OneWayList<T>::get_postion(int pos)
+T TwoWayList<T>::get_postion(int pos)
 {
 	node<T> *current = new node<T>();
 	current = head;

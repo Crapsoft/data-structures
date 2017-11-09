@@ -11,7 +11,6 @@ private:
 public:
 	Array(int size);
 	Array(int size, T* array);
-	int getSize();
 	void Reverse();
 	void BubbleSort();
 	void Print();
@@ -19,7 +18,6 @@ public:
 	void MergeSort(int l, int r);
 	int BinarySearch(int l, int r, T target);
 	int LinearSearch(int l, int r, T target);
-	Array<T> operator+(const Array<T>&);
 	~Array();
 };
 

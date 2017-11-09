@@ -17,12 +17,6 @@ Array<T>::Array(int size, T* array) {
 
 
 template <typename T>
-int Array<T>::getSize() {
-	return size;
-}
-
-
-template <typename T>
 void Array<T>::Print() {
 	for (int i = 0; i < size; i++)
 	{
@@ -191,36 +185,6 @@ int Array<T>::LinearSearch(int l, int r, T target) {
 
 
 template <typename T>
-Array<T> Array<T>::operator+(const Array<T>& arr)
-{
-	int nsize = arr.size + size;
-	T* buffer = new T[nsize];
-	for (int i = 0; i < size; i++)
-	{
-		buffer[i] = array[i];
-	}
-	for (int i = size; i < nsize; i++)
-	{
-		buffer[i] = arr[nsize - i];
-	}
-	Array<T>t_res(nsize,buffer);
-	return t_res;
-	
-}
-
-
-template <typename T>
 Array<T>::~Array()
 {
-}
-
-void main() {
-	int *mass = new int[1, 3, 64, 7];
-	//Array<int> *a = new Array<int>(4, mass);
-	//Array<int> *b = new Array<int>(4, mass);
-	Array<int> a(4, mass);
-	Array<int> b(4, mass);
-	Array<int> c = a + b;
-	c.Print();
-	system("pause");
 }
