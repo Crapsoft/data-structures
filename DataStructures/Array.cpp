@@ -193,16 +193,17 @@ int Array<T>::LinearSearch(int l, int r, T target) {
 template <typename T>
 Array<T> Array<T>::operator+(const Array<T>& arr)
 {
-	T* buffer = new T[arr.getSize + size];
+	int nsize = arr.size + size;
+	T* buffer = new T[nsize];
 	for (int i = 0; i < size; i++)
 	{
 		buffer[i] = array[i];
 	}
-	for (int i = size; i < arr.getSize() + size; i++)
+	for (int i = size; i < nsize; i++)
 	{
-		buffer[i] = arr[arr.getSize() + size - i];
+		buffer[i] = arr[nsize - i];
 	}
-	Array<T>* t_res = new Array<T>(arr.getSize() + size,buffer);
+	Array<T>t_res(nsize,buffer);
 	return t_res;
 	
 }
