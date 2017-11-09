@@ -207,28 +207,7 @@ Array<T> Array<T>::operator+(const Array<T>& arr)
 	return t_res;
 	
 }
-template <typename T>
-Array<T> Array<T>::operator+(const Array<T>& el)
-{
-	cout << endl;
-	int nsize = el.size + size;
-	T* buffer = new T[nsize];
-	int k = 0;
-	for (int i = 0; i < size; i++)
-	{
-		buffer[k] = array[i];
-		k++;
-	}
 
-	for (int i = 0; i < el.size; i++)
-	{
-		buffer[k] = el.array[i];
-		k++;
-	}
-	Array<T>t_res(nsize, buffer);
-	return t_res;
-
-}
 
 template <typename T>
 Array<T>::~Array()
