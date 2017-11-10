@@ -1,9 +1,9 @@
 # Data Structures
 This program gives you an opportunity to work with lists, double lists, stacks and queues. Let's speak about Lists.
 
-## Line list
+## Singly Linked list
 
-Line list - is a dynamic data structure, each element of which is with the help of a pointer binds to the next element (in unconnected or unilaterally linked lists) or to the next and the previous elements (in dovetailed or bipartite linked lists). The list has a "head" - the first one element and "tail" - the last element. We can do a lot of operations with lists. They are pushback, leftpop, pop, remove, sorting, insert elements, head on tail.
+Singly linked list - is a dynamic data structure, each element of which is with the help of a pointer binds to the next element (in unconnected or unilaterally linked lists) or to the next and the previous elements (in dovetailed or bipartite linked lists). The list has a "head" - the first one element and "tail" - the last element. We can do a lot of operations with lists. They are pushback, leftpop, pop, remove, sorting, insert elements, head on tail.
 We can do the same opetations with double lists. But in addition you can find the elem from right.
 
 ## Stack
