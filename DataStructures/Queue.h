@@ -15,5 +15,6 @@ public:
 	T dequeue();
 	void enqueue(T _member);
 	int search(T _key)const;		// return the position of the first _key element
+	void display()const;
 };
 

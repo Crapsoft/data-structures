@@ -183,30 +183,29 @@ int Array<T>::LinearSearch(int l, int r, T target) {
 	return -1;
 }
 
-
 template <typename T>
-<<<<<<< HEAD
-=======
 Array<T> Array<T>::operator+(const Array<T>& arr)
 {
 	int nsize = arr.size + size;
 	T* buffer = new T[nsize];
+	int k = 0;
 	for (int i = 0; i < size; i++)
 	{
-		buffer[i] = array[i];
+		buffer[k] = array[i];
+		k++;
 	}
-	for (int i = size; i < nsize; i++)
+	for (int i = 0; i < arr.size; i++)
 	{
-		buffer[i] = arr[nsize - i];
+		buffer[k] = arr.array[i];
+		k++;
 	}
-	Array<T>t_res(nsize,buffer);
+	Array<T>t_res(nsize, buffer);
 	return t_res;
-	
+
 }
+
 template <typename T>
-Array<T> Array<T>::operator+(const Array<T>& el)
-{
-	cout << endl;
+void Array<T>::operator+=(const Array<T>& el) {
 	int nsize = el.size + size;
 	T* buffer = new T[nsize];
 	int k = 0;
@@ -221,13 +220,15 @@ Array<T> Array<T>::operator+(const Array<T>& el)
 		buffer[k] = el.array[i];
 		k++;
 	}
-	Array<T>t_res(nsize, buffer);
-	return t_res;
-
+	array = new T[nsize];
+	for (int i = 0; i < nsize; i++)
+	{
+		array[i] = buffer[i];
+	}
+	size = nsize;
 }
 
 template <typename T>
->>>>>>> 775822054eb1938a39ca5c9f6bce7a95b544928e
 Array<T>::~Array()
 {
 }

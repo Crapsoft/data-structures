@@ -18,6 +18,8 @@ public:
 	void MergeSort(int l, int r);
 	int BinarySearch(int l, int r, T target);
 	int LinearSearch(int l, int r, T target);
+	Array<T> operator+(const Array<T>& arr);
+	void operator+=(const Array<T>&);
 	~Array();
 };
 

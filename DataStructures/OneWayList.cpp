@@ -202,6 +202,7 @@ int OneWayList<T>::search(T _key)const
 			}
 		}
 	}
+	return -1;
 }
 
 template <typename T>

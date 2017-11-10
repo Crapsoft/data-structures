@@ -47,3 +47,9 @@ int Queue<T>::search(T _key) const
 {
 	return foo.search(_key);
 }
+
+template<class T>
+void Queue<T>::display() const
+{
+	foo.display();
+}

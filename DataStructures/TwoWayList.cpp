@@ -1,3 +1,4 @@
+#pragma once
 #include "TwoWayList.h"
 
 template <class T>
@@ -25,9 +26,10 @@ bool TwoWayList<T>::isEmpty()const
 template <class T>
 void TwoWayList<T>::insert_tail(T value)
 {
-	node<T> *temp = new node<T>();
+	nodek<T> *temp = new nodek<T>();
 	temp->data = value;
 	temp->next = NULL;
+	temp->prev = tail;
 	if (this->head == NULL)
 	{
 		this->head = temp;
@@ -47,7 +49,7 @@ void TwoWayList<T>::insert_tail(T value)
 template <class T>
 void TwoWayList<T>::display()const
 {
-	node<T> *temp = new node<T>();
+	nodek<T> *temp = new nodek<T>();
 	temp = NULL;
 	if (!isEmpty()) {
 		temp = head;
@@ -64,13 +66,34 @@ void TwoWayList<T>::display()const
 	delete temp;
 }
 
+template <class T>
+void TwoWayList<T>::display_reverse()const
+{
+	nodek<T> *temp = new nodek<T>();
+	temp = NULL;
+	if (!isEmpty()) {
+		temp = tail;
+		while (temp != NULL)
+		{
+			std::cout << temp->data << "\t";
+			temp = temp->prev;
+		}
+		std::cout << endl;
+	}
+	else {
+		std::cout << "List is empty! \n";
+	}
+	delete temp;
+}
+
 
 template <class T>
 void TwoWayList<T>::insert_start(T value)
 {
-	node<T> *temp = new node<T>();
+	nodek<T> *temp = new nodek<T>();
 	temp->data = value;
 	temp->next = head;
+	head->prev = temp;
 	head = temp;
 
 	this->size++;
@@ -80,9 +103,9 @@ void TwoWayList<T>::insert_start(T value)
 template <class T>
 void TwoWayList<T>::insert_position(int pos, T value)
 {
-	node<T> *pre = new node<T>();
-	node<T> *cur = new node<T>();
-	node<T> *temp = new node<T>();
+	nodek<T> *pre = new nodek<T>();
+	nodek<T> *cur = new nodek<T>();
+	nodek<T> *temp = new nodek<T>();
 	cur = head;
 	for (int i = 1; i<pos; i++)
 	{
@@ -92,6 +115,8 @@ void TwoWayList<T>::insert_position(int pos, T value)
 	temp->data = value;
 	pre->next = temp;
 	temp->next = cur;
+	temp->prev = pre;
+	next->prev = temp;
 
 	this->size++;
 }
@@ -101,7 +126,7 @@ template <class T>
 void TwoWayList<T>::delete_first()
 {
 	if (this->size > 1) {
-		node<T> *temp = new node<T>();
+		nodek<T> *temp = new nodek<T>();
 		temp = head;
 		this->head = this->head->next;
 		delete temp;
@@ -130,8 +155,8 @@ void TwoWayList<T>::delete_last()
 		this->tail = NULL;
 	}
 	else {
-		node<T> *current = new node<T>();
-		node<T> *previous = new node<T>();
+		nodek<T> *current = new nodek<T>();
+		nodek<T> *previous = new nodek<T>();
 		current = head;
 		while (current->next != NULL)
 		{
@@ -155,10 +180,15 @@ void TwoWayList<T>::delete_pos(int pos)
 		delete head;
 		delete tail;
 	}
+	else if (pos == 0)
+	{
+		delete_first();
+		return;
+	}
 	else
 	{
-		node<T> *current = new node<T>();
-		node<T> *previous = new node<T>();
+		nodek<T> *current = new nodek<T>();
+		nodek<T> *previous = new nodek<T>();
 		current = head;
 		for (int i = 0; i < pos; i++)
 		{
@@ -186,7 +216,7 @@ int TwoWayList<T>::search(T _key)const
 	}
 	else
 	{
-		node<T> *temp = head;
+		nodek<T> *temp = head;
 		int pos = 0;
 		while (temp->data != _key)
 		{
@@ -200,6 +230,7 @@ int TwoWayList<T>::search(T _key)const
 			}
 		}
 	}
+	return -1;
 }
 
 template <class T>
@@ -219,7 +250,7 @@ T TwoWayList<T>::get_first()
 template <class T>
 T TwoWayList<T>::get_postion(int pos)
 {
-	node<T> *current = new node<T>();
+	nodek<T> *current = new nodek<T>();
 	current = head;
 	for (int i = 1; i<pos; i++)
 	{

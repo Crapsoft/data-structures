@@ -1,11 +1,12 @@
 #pragma once
 #include <cstdlib>
+#include <iostream>
 
 template <class T>
-struct node
+struct nodek
 {
 	T data;
-	node<T> *prev, *next;
+	nodek<T> *prev, *next;
 };
 
 template <class T>
@@ -13,14 +14,15 @@ class TwoWayList
 {
 private:
 	int size;
-	node<T> *head;
-	node<T> *tail;
+	nodek<T> *head;
+	nodek<T> *tail;
 public:
 	TwoWayList();
 	~TwoWayList();
 	bool isEmpty()const;
 	void insert_tail(T value);
 	void display()const;
+	void display_reverse()const;
 	void insert_start(T value);
 	void insert_position(int pos, T value);
 	void delete_first();
