@@ -16,9 +16,9 @@
 
 # Array
 
-* Reverse()
-* BubbleSort();
-* QuickSort(int left, int right)
-*	void MergeSort(int l, int r)
+* Reverse() - переміщає елементи масиву в зворотньому порядку
+* BubbleSort() - виконує сортування елементів всього масиву методом бульбашки (за умови, що об'єкти в масиві порівнювані між собою)
+* QuickSort(int left, int right) - виконує сортування елементів масиву від індексу left до індексу right методом швидкого сортування (за умови, що об'єкти в масиві порівнювані між собою)
+*	void MergeSort(int l, int r) - виконує сортування елементів масиву від індексу left до індексу right методом сортування злиттям (за умови, що об'єкти в масиві порівнювані між собою)
 * BinarySearch(int l, int r, T target)
 * LinearSearch(int l, int r, T target)
