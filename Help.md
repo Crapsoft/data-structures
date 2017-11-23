@@ -22,3 +22,18 @@
 *	**MergeSort(int l, int r)** - виконує сортування елементів масиву від індексу left до індексу right методом сортування злиттям (за умови, що об'єкти в масиві порівнювані між собою)
 * **int BinarySearch(int l, int r, T target)** - виконує пошук елементу target від індексу l до індексу r методом бінарного пошуку, повертає індекс першого входження такого елементу або -1 у разі його відсутності (працює коректно за умови посортованості масиву)
 * **int LinearSearch(int l, int r, T target)** - виконує пошук елементу target від індексу l до індексу r методом перебору елементів, повертає індекс першого входження такого елементу або -1 у разі його відсутності
+
+# Singly linked list
+
+* **bool isEmpty()**
+* **void insert_tail(T value)**
+*	**void display()const**
+*	**void insert_start(T value)**
+*	**void insert_position(int pos, T value)**
+*	**void delete_first()**
+*	**void delete_last()**
+*	**void delete_pos(int pos)**
+*	**int search(T _key)**
+*	**get_last()**
+*	**get_first()**
+*	**get_postion(int pos)**
