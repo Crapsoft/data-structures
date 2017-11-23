@@ -10,13 +10,6 @@ Array<T>::Array(int size)
 
 
 template <typename T>
-Array<T>::Array(int size, T* array) {
-	this->array = array;
-	this->size = size;
-}
-
-
-template <typename T>
 void Array<T>::Print() {
 	for (int i = 0; i < size; i++)
 	{
@@ -228,7 +221,15 @@ void Array<T>::operator+=(const Array<T>& el) {
 	size = nsize;
 }
 
+template<typename T>
+T& Array<T>::get(int i) {
+	return &array[i];
+}
+
+
 template <typename T>
 Array<T>::~Array()
 {
+	delete array;
+
 }

@@ -10,7 +10,7 @@ private:
 	void merge(int l, int m, int r);
 public:
 	Array(int size);
-	Array(int size, T* array);
+	T& get(int i);
 	void Reverse();
 	void BubbleSort();
 	void Print();
