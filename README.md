@@ -14,7 +14,7 @@
 
 ## Двозв'язний список
 
-Див. [Однозв'язний список]()
+Див. [Однозв'язний список](https://github.com/Crapsoft/data-structures/blob/master/README.md#Однозвязний-список)
 
 ## Стек
 
