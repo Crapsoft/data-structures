@@ -111,5 +111,5 @@ void Stack<T>::display() const
 template <typename T>
 Stack<T>::~Stack()
 {
-
+	delete top;
 }

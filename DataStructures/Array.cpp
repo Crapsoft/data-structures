@@ -8,6 +8,16 @@ Array<T>::Array(int size)
 	this->array = new T[size];
 }
 
+template <typename T>
+Array<T>::Array(int size, T* arr) {
+	this->size = size;
+	array = new T[size];
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = arr[i];
+	}
+}
+
 
 template <typename T>
 void Array<T>::Print() {
@@ -198,7 +208,7 @@ Array<T> Array<T>::operator+(const Array<T>& arr)
 }
 
 template <typename T>
-void Array<T>::operator+=(const Array<T>& el) {
+Array<T>& Array<T>::operator+=(const Array<T>& el) {
 	int nsize = el.size + size;
 	T* buffer = new T[nsize];
 	int k = 0;
@@ -219,6 +229,7 @@ void Array<T>::operator+=(const Array<T>& el) {
 		array[i] = buffer[i];
 	}
 	size = nsize;
+	return *this;
 }
 
 template<typename T>
@@ -230,6 +241,6 @@ T& Array<T>::get(int i) {
 template <typename T>
 Array<T>::~Array()
 {
-	delete array;
+	//delete array;
 
 }
