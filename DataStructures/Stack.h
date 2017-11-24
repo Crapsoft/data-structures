@@ -16,7 +16,8 @@ public:
 	T pop();
 	int getSize();
 	T getTop();
-	bool isempty();
+	bool isEmpty();
 	void clear();
+	void display()const;
 };
 

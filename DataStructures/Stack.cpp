@@ -67,7 +67,7 @@ template <typename T>
 T Stack<T>::getTop() {
 	if (top == NULL)
 	{
-		cout << "Stack is empty";
+		cout << "Stack is empty ";
 		return NULL;
 	}
 	else
@@ -77,7 +77,7 @@ T Stack<T>::getTop() {
 }
 
 template <typename T>
-bool Stack<T>::isempty() {
+bool Stack<T>::isEmpty() {
 	if (size == 0)
 	{
 		return true;
@@ -90,10 +90,22 @@ bool Stack<T>::isempty() {
 
 template<typename T>
 void Stack<T>::clear() {
-	while (!isempty())
+	while (!isEmpty())
 	{
 		pop();
 	}
+}
+
+template<typename T>
+void Stack<T>::display() const
+{
+	node<T>* temp = top;
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+	cout << endl;
 }
 
 template <typename T>

@@ -31,8 +31,8 @@ int main()
 	ArrayTest();
 	cout << endl << endl;
 
-	StackTest();
-	cout << endl << endl;
+	 StackTest();
+	 cout << endl << endl;
 
 	system("pause");
 	return 0;
@@ -147,17 +147,18 @@ void ArrayTest() {
 
 void StackTest() {
 	Stack<int>* stack = new Stack<int>();
+	cout << "Stack Demo: \n";
 	cout << "Pushing el" << endl;
 	stack->push(3);
 	stack->push(2);
 	stack->push(40);
-	cout << 3 << " " << 2 << " " << 40 << endl;
+	stack->display();
 	stack->pop();
 	cout << "Stack->pop()" << endl;
-	cout << 3 << " " << 2 << " " << endl;
+	stack->display();
 	cout << "Stack->pop()" << endl;
 	stack->pop();
-	cout << 3 << " " << endl;
+	stack->display();
 	cout << "Stack->pop()" << endl;
 	stack->pop();
 	cout << "Stack->getTop()" << endl;
